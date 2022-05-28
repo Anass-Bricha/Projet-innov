@@ -32,7 +32,8 @@ public class AppUser{
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private final boolean active = true;
-    @OneToOne
+    /*@ManyToOne
     @JoinColumn(name = "roleUser",referencedColumnName = "role")
-    private Roles role;
+    private Roles role;*/
+    private String role;
 }
