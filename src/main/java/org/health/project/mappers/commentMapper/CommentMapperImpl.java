@@ -20,8 +20,6 @@ public class CommentMapperImpl implements CommentMapper {
     @Override
     public CommentDto from_Comment_To_CommentDto(Comment comment) {
 
-        //TypeMap<Comment,CommentDto> commentMapper = modelMapper.createTypeMap(Comment.class,CommentDto.class);
-        //commentMapper.addMappings(modelMapper -> modelMapper.skip(CommentDto::setPostDto));
 
         CommentDto commentDto = modelMapper.map(comment,CommentDto.class);
 

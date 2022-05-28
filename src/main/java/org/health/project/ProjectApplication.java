@@ -3,7 +3,6 @@ package org.health.project;
 import org.health.project.dtos.CommentDto;
 import org.health.project.dtos.NotePadDto;
 import org.health.project.dtos.PostDto;
-import org.health.project.entites.Comment;
 import org.health.project.entites.Post;
 import org.health.project.mappers.PostMapper.PostMapper;
 import org.health.project.mappers.commentMapper.CommentMapper;
@@ -15,7 +14,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Stream;
 
 @SpringBootApplication
 public class ProjectApplication {
@@ -26,11 +28,14 @@ public class ProjectApplication {
 
 
     @Bean
-    CommandLineRunner start(NotePadService notePadService,PostService postService, CommentService commentService, PostMapper postMapper, CommentMapper commentMapper){
+    CommandLineRunner start(NotePadService notePadService,
+                            PostService postService,
+                            CommentService commentService,
+                            PostMapper postMapper,
+                            CommentMapper commentMapper){
         return args -> {
             for (int i = 0; i < 5; i++) {
                 PostDto postDto = new PostDto();
-                postDto.setDatePosted(new Date());
                 postDto.setContent("test content"+i);
                 PostDto savePostDto = postService.savePost(postDto);
                 //postService.savePost(postDto);
@@ -59,6 +64,8 @@ public class ProjectApplication {
                 notePadDto.setContent("note content");
                 notePadService.saveNote(notePadDto);
             }
+
+
         };
     }
 }
